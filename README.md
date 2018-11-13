@@ -26,9 +26,10 @@ cd CancerSiteClassification
 ```
 - download the dataset
 
-I prepared a small dataset. you can download it <a href="https://arxiv.org/abs/1803.04054"> and put it in rep folder. You can also try some other dataset.
+I prepared a small dataset. you can download <a href="https://arxiv.org/abs/1803.04054"> this toy dataset </a> and put it in rep folder. You can also try some other dataset.
 
 ### Extract tiles
+Run the scripts to extract all the tiles contains tissues from the slides. Here we simply calculate the intensity of all the grayscale pixel value. If the intensity of a tile is blew the threshold, we extract the tile. 
 
 ```bash
 cd gen_feature
