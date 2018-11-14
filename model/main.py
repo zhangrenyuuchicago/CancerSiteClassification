@@ -110,7 +110,8 @@ for epoch in range(epoch_num):
         y = torch.transpose(y, 0, 1)
         y = torch.squeeze(y)
         y_var = torch.autograd.Variable(y)
-
+        
+        # be sure to zero all the grad before each update
         optimizer.zero_grad()
         
         res = inception_v3(input_var)
@@ -153,8 +154,10 @@ for epoch in range(epoch_num):
     sum_y_acc = 0.0
     sum_loss = 0.0
     count = 0
+
     inception_v3.eval()
     model_site.eval()
+    
     for id, (item, y) in enumerate(val_data_loader):
         item = item.cuda()
         input_var = torch.autograd.Variable(item, requires_grad=False)
@@ -163,7 +166,8 @@ for epoch in range(epoch_num):
         y = torch.transpose(y, 0, 1)
         y = torch.squeeze(y)
         y_var = torch.autograd.Variable(y)
-
+        
+        # we do not need any gradient here.
         with torch.no_grad():
             res = inception_v3(input_var)
             y_pred = model_site(res)

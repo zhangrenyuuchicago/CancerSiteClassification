@@ -9,7 +9,7 @@ import ntpath
 def generate_tile(slidefile, cancer_site, output_folder):
     # grid size in 20X magnification slide; double it when magnification is 40X
     grid_size = 1000
-    # white cutoff; when 
+    # white cutoff; when < hi_cutoff, keep it 
     hi_cutoff = 0.85
     # keep only those patches within $inter_intensity$ of grayscale intensity distribution
     inter_intensity = 1.0
@@ -26,6 +26,8 @@ def generate_tile(slidefile, cancer_site, output_folder):
     image = slide.read_region((0, 0), level, (width, height))
     img_gray = image.convert(mode="L")
 
+    # region of interest; 
+    # currently set all the slide as ROI
     ROI = []
     ROI.append([0, width, 0, height])
 
