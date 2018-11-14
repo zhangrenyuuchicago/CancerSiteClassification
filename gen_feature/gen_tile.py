@@ -13,7 +13,7 @@ cancer_site_set = {"COAD", "UCEC"}
 source_dir = "../data/Slide"
 for cancer_site in cancer_site_set:
     for stage in ["train", "val"]:
-        for file_path in tqdm.tqdm(glob.glob(source_dir + "/" + stage + "/" + cancer_site + "/*.svs")):
+        for file_path in tqdm.tqdm(glob.glob(source_dir + "/" + stage + "/" + cancer_site + "/*/*.svs")):
             out_dir = "../data/Tile/" + stage + "/" + cancer_site
             
             if not os.path.exists(out_dir):
