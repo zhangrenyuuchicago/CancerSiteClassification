@@ -19,18 +19,23 @@ In this model, we use <a href="https://arxiv.org/abs/1512.00567"> Inception-V3 <
 
 ## Getting Started
 
-### Installation and Download
+### Installation
 - install all required libs
 - clone this rep
 ```bash
 git clone https://github.com/zhangrenyuuchicago/CancerSiteClassification
 cd CancerSiteClassification/
 ```
-- download the <a href="https://arxiv.org/abs/1512.00567"> toy dataset </a>
+### Download toy dataset
+Use <a href="https://gdc.cancer.gov/access-data/gdc-data-transfer-tool"> gdc data tansfer tool </a> to download slides. You can go to <a href="https://portal.gdc.cancer.gov/legacy-archive/search/f"> NIH GDC legacy Archive </a> to choose the slides. I have chosen some slides and the file ids are specified in the manifest files. 
 
-The space would be about 44G. 
-
-I prepared a small dataset. you can download <a href="https://arxiv.org/abs/1803.04054"> this toy dataset </a> and put it in rep folder. You can also try some other dataset.
+```bash
+cd gdc_transfer_tool
+./gdc-client download --manifest ../train/gdc_manifest_colorectal.txt -d ../train/COAD/
+./gdc-client download --manifest ../train/gdc_manifest_uterine.txt -d ../train/UCEC/
+./gdc-client download --manifest ../val/gdc_manifest_colorectal.txt -d ../val/COAD/
+./gdc-client download --manifest ../val/gdc_manifest_uterine.txt -d ../val/UCEC/
+```
 
 ### Extract tiles
 Run the scripts to extract all the tiles contain tissues from the slides. A typical tile size is 1000X1000. All these tiles are resized to 299X299 which is used by <a href="https://arxiv.org/abs/1512.00567"> Inception-V3 </a>. Here we simply calculate the intensity of all the grayscale pixel values. If the intensity of a tile is blew the threshold, we keep the tile. 
