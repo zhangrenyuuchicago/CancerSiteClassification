@@ -1,6 +1,6 @@
 # Cancer Site Classification
 
-This is a small example for you to get started with your course. <a href="https://pytorch.org/"> Pytorch </a> is used in this task. 
+This is a small example for you to get started with your course. <a href="https://pytorch.org/"> Pytorch </a> is used in this task. You can read the tutorials if this the fisrt time for you to use Pytorch. 
 
 In this model, we use <a href="https://arxiv.org/abs/1512.00567"> Inception-V3 </a> as feature extractor. Extracted tiles that contains tissues are feeded to Inception-V3. The representations are feeded to a classifier. Here we aim to classify two types of cancer sites(COAD and UCEC). 
 
